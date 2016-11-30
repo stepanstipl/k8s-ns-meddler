@@ -1,4 +1,6 @@
 # k8s-ns-meddler
+[![wercker status](https://app.wercker.com/status/437468793eefe633f79a7e2fe535aaf0/s/master
+"wercker status")](https://app.wercker.com/project/byKey/437468793eefe633f79a7e2fe535aaf0)
 
 k8s-ns-meddler will watch Kubernetes API for new namespaces and create new
 secret (based on some existing secret) in each.
