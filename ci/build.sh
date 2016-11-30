@@ -11,7 +11,7 @@ PACKAGE_DIR="${GOPATH}/src/${PACKAGE}"
 mkdir -p "${GOPATH}/src/github.com/stepanstipl"
 ln -s "${WERCKER_SOURCE_DIR}" "${GOPATH}/src/${PACKAGE}"
 cd "${PACKAGE_DIR}"
-apk add --update openssl git curl jq
+apk add --update openssl git
 
 # Install Glide
 wget -O- "https://github.com/Masterminds/glide/releases/download/${GLIDE_VERSION}/glide-${GLIDE_VERSION}-linux-amd64.tar.gz" | tar -xzO linux-amd64/glide > /usr/local/bin/glide
