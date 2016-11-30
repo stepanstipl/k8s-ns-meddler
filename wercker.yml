@@ -15,7 +15,7 @@ push-github:
           echo "Release tag: ${MY_RELEASE_TAG}" && \
           tar zcvf "k8s-ns-meddler-linux-amd64.tar.gz" "${WERCKER_ROOT}/k8s-ns-meddler" && \
           apk add --update curl jq openssl
-    - github-create-release:
+    - stepanstipl/github-create-release:
         token: $GITHUB_TOKEN
         tag: $MY_RELEASE_TAG
     - stepanstipl/github-upload-asset:
