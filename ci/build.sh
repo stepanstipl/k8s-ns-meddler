@@ -8,7 +8,6 @@ PACKAGE="github.com/stepanstipl/${APP}"
 PACKAGE_DIR="${GOPATH}/src/${PACKAGE}"
 
 # Setup env
-apk add --update openssl git
 mkdir -p "${GOPATH}/src/github.com/stepanstipl"
 ln -s "${WERCKER_SOURCE_DIR}" "${GOPATH}/src/${PACKAGE}"
 cd "${PACKAGE_DIR}"

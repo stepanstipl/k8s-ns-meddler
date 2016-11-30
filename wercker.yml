@@ -1,5 +1,5 @@
 box:
-  id: golang:1.7.3-alpine
+  id: golang:1.7.3
   cmd: /bin/sh
 build:
   steps:
@@ -13,8 +13,7 @@ push-github:
         code: |
           export MY_RELEASE_TAG=$(cat $WERCKER_ROOT/.release_tag) && \
           echo "Release tag: ${MY_RELEASE_TAG}" && \
-          tar zcvf "k8s-ns-meddler-linux-amd64.tar.gz" "${WERCKER_ROOT}/k8s-ns-meddler" && \
-          apk add --update curl jq
+          tar zcvf "k8s-ns-meddler-linux-amd64.tar.gz" "${WERCKER_ROOT}/k8s-ns-meddler"
     - github-create-release:
         token: $GITHUB_TOKEN
         tag: $MY_RELEASE_TAG
