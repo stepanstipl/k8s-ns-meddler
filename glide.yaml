@@ -1,0 +1,14 @@
+package: github.com/stepanstipl/k8s-ns-meddler
+import:
+- package: github.com/jessevdk/go-flags
+  version: v1.1
+- package: github.com/op/go-logging
+  version: master
+- package: k8s.io/client-go
+  version: v1.5
+  subpackages:
+  - 1.5/kubernetes
+  - 1.5/pkg/api/v1
+  - 1.5/pkg/fields
+  - 1.5/rest
+  - 1.5/tools/cache

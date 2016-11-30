@@ -1,0 +1,39 @@
+box:
+  id: golang:1.7.3-alpine
+  cmd: /bin/sh
+build:
+  steps:
+    - script:
+        name: build
+        code: ci/build.sh
+push-github:
+  steps:
+    - script:
+        name: restore release tag
+        code: |
+          export MY_RELEASE_TAG=$(cat $WERCKER_ROOT/.release_tag) && \
+          echo "Release tag: ${MY_RELEASE_TAG}" && \
+          tar zcvf "k8s-ns-meddler-linux-amd64.tar.gz" "${WERCKER_ROOT}/k8s-ns-meddler"
+    - github-create-release:
+        token: $GITHUB_TOKEN
+        tag: $MY_RELEASE_TAG
+    - github-upload-asset:
+        token: $GITHUB_TOKEN
+        file: k8s-ns-meddler-linux-amd64.tar.gz
+        content_type: application/x-gzip
+push-quay:
+  steps:
+    - script:
+        name: restore release tag
+        code: |
+          export MY_RELEASE_TAG=$(cat $WERCKER_ROOT/.release_tag) && \
+          echo "Release tag: ${MY_RELEASE_TAG}"
+    - internal/docker-push:
+        username: $QUAY_USERNAME
+        password: $QUAY_TOKEN
+        tag:  $MY_RELEASE_TAG latest
+        repository: quay.io/stepanstipl/k8s-ns-meddler
+        registry: https://quay.io
+        ports: 8080/tcp
+        author: Stepan Stipl
+        cmd: /k8s-ns-meddler
