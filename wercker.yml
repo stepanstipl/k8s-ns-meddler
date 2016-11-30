@@ -32,7 +32,7 @@ push-quay:
     - internal/docker-push:
         username: $QUAY_USERNAME
         password: $QUAY_TOKEN
-        tag:  $MY_RELEASE_TAG latest
+        tag:  $MY_RELEASE_TAG,latest
         repository: quay.io/stepanstipl/k8s-ns-meddler
         registry: https://quay.io
         ports: 8080/tcp
