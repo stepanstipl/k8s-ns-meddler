@@ -1,5 +1,5 @@
 box:
-  id: golang:1.7.3
+  id: golang:1.7.3-alpine
   cmd: /bin/sh
 build:
   steps:
@@ -17,7 +17,7 @@ push-github:
     - github-create-release:
         token: $GITHUB_TOKEN
         tag: $MY_RELEASE_TAG
-    - github-upload-asset:
+    - stepanstipl/github-upload-asset:
         token: $GITHUB_TOKEN
         file: k8s-ns-meddler-linux-amd64.tar.gz
         content_type: application/x-gzip
